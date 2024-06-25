@@ -2,9 +2,9 @@ import type { Site, Page, Links, Socials } from "@types"
 
 // Global
 export const SITE: Site = {
-  TITLE: "Srikeerthi",
+  TITLE: "Srikeerthi Srinivasan",
   DESCRIPTION: "Welcome to my website",
-  AUTHOR: "Srikeerthi",
+  AUTHOR: "Srikeerthi Srinivasan",
 }
 
 // Work Page

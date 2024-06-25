@@ -1,4 +1,4 @@
-## srikeerthi.github.io
+## srikeerthi.dev
 
 This repository contains implementation of my portfolio.
 

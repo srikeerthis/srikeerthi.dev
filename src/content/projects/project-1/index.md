@@ -1,6 +1,6 @@
 ---
 title: "Essay Evaluator"
-summary: "Evaluate essays using ChatGPT API"
+summary: "Developed a web-based application to assess essays using the OpenAI ChatGPT API, leveraging Django for backend operations."
 date: "Apr 07 2024"
 draft: false
 tags:
@@ -13,6 +13,19 @@ tags:
 # repoUrl: https://github.com/srikeerthis/essay-evaluator
 ---
 
-Utilized Open AI API - ChatGPT 3.5 Model to evaluate an input essay given by the user. The API returns the score of the essay based on the following parameters: - Relevance of content to the title of the essay - Count of spelling errors - The words with errors - Overall feedback about the essay
+The Essay Evaluator is a dynamic web application that utilizes the OpenAI ChatGPT 3.5 model to analyze and score essays submitted by users. This tool provides immediate feedback on various aspects of the essay, including:
 
-The backend framework in Django and the essays along the with evaluation results are stored in the Django ORM database that will be later shifted to postgres database.
+- Relevance: Assesses how closely the content of the essay aligns with the given title.
+- Spelling Accuracy: Identifies and counts spelling errors, highlighting the words affected.
+- Content Feedback: Offers comprehensive feedback to enhance the quality of the writing.
+
+Technical Implementation:
+
+- Backend: Developed using Django, the application interfaces seamlessly with the OpenAI API to process and evaluate essays. The results, along with the essays themselves, are stored efficiently in the Django ORM database.
+- Frontend: Designed a user-friendly interface with HTML and CSS, ensuring a smooth user experience for essay submission and review.
+
+Key Contributions:
+
+- Integrated OpenAI’s advanced natural language processing technology to provide detailed assessments of textual content.
+- Engineered the application’s backend with Django, facilitating robust data management and API interactions.
+- Crafted a clean, intuitive frontend, enabling easy navigation and interaction for users.

@@ -12,11 +12,14 @@ tags:
   - boto3
   - Data Processing
   - Cloud Computing
+repoUrl: https://github.com/srikeerthis/etl-process
 ---
 
 ## Introduction
 
 In the world of data processing, ETL (Extract, Transform, Load) pipelines are fundamental for moving and transforming data from one system to another. In this blog, we will walk you through creating a simple ETL pipeline using AWS services. We will start with a CSV file, upload it to an S3 bucket, process it with a Python script, and store the data in a DynamoDB table.
+
+You can find the complete code for this project on [GitHub](https://github.com/srikeerthis/etl-process).
 
 ## Prerequisites
 
@@ -220,3 +223,5 @@ python3 view_table.py
 In this blog, we've walked through the process of setting up a simple ETL pipeline using AWS services. By leveraging S3 for storage, DynamoDB for a NoSQL database, and Python for scripting, we created a robust solution for processing and managing data. This approach can be extended and scaled to handle more complex data processing tasks.
 
 Feel free to experiment and enhance the pipeline to suit your specific requirements. Happy coding!
+
+You can find the complete code for this project on [GitHub](https://github.com/srikeerthis/etl-process).

@@ -29,6 +29,12 @@ const subpath = pathname.match(/[^/]+/g)
       </svg>
     </a>
 
+    <a href="/resume.pdf" target="_blank" aria-label={`Resume ${SITE.TITLE}`} class="size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out" download>
+      <svg class="size-full">
+        <use href="/ui.svg#resume"></use>
+      </svg>
+    </a>
+
     <button id="drawer-theme-button" aria-label={`Toggle light and dark theme`} class="size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out">
       <svg class="block dark:hidden size-full">
         <use href="/ui.svg#sun"></use>

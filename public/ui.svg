@@ -19,6 +19,14 @@
       <path d="M16 16l4.5 4.5"/>
     </symbol>
 
+    <!-- resume -->
+    <symbol id="resume" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+      <path d="M4 2h12l4 4v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/> <!-- Rectangle with a triangle cutout at the top right corner -->
+  <path d="M16 2v4h4"/> <!-- Triangle cutout detail -->
+  <circle cx="8" cy="10" r="2.5"/> <!-- Larger profile picture circle -->
+  <line x1="6" y1="15" x2="18" y2="15"/> <!-- Line below the circle -->
+    </symbol>
+
     <!-- rss -->
     <symbol id="rss" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
       <path d="M4 11a9 9 0 019 9"/>

@@ -63,6 +63,24 @@ import Container from "@components/Container.astro";
             <use href="/ui.svg#search"></use>
           </svg>
         </a>
+        
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          aria-label={`Resume ${SITE.TITLE}`}
+          class={cn(
+            "hidden md:flex",
+            "size-9 rounded-full p-2 items-center justify-center",
+            "bg-transparent hover:bg-black/5 dark:hover:bg-white/20",
+            "stroke-current hover:stroke-black hover:dark:stroke-white",
+            "border border-black/10 dark:border-white/25",
+            "transition-colors duration-300 ease-in-out"
+          )}
+        >
+          <svg class="size-full">
+            <use href="/ui.svg#resume"></use>
+          </svg>
+        </a>
 
         <a
           href="/rss.xml"
@@ -76,7 +94,7 @@ import Container from "@components/Container.astro";
             "border border-black/10 dark:border-white/25",
             "transition-colors duration-300 ease-in-out"
           )}
-        >
+        download>
           <svg class="size-full">
             <use href="/ui.svg#rss"></use>
           </svg>

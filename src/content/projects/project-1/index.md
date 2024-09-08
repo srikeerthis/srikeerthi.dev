@@ -10,7 +10,7 @@ tags:
   - HTML
   - CSS
   - Prompt Engineering
-# repoUrl: https://github.com/srikeerthis/essay-evaluator
+repoUrl: https://github.com/srikeerthis/essay-evaluator
 ---
 
 The Essay Evaluator is a dynamic web application that utilizes the OpenAI ChatGPT 3.5 model to analyze and score essays submitted by users. This tool provides immediate feedback on various aspects of the essay, including:

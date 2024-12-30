@@ -38,7 +38,7 @@ export const LINKS: Links = [
     HREF: "/", 
   },
   { 
-    TEXT: "Experience", 
+    TEXT: "Work", 
     HREF: "/work", 
   },
   { 
@@ -48,6 +48,10 @@ export const LINKS: Links = [
   { 
     TEXT: "Projects", 
     HREF: "/projects", 
+  },
+  { 
+    TEXT: "Contact", 
+    HREF: "/#connect", 
   },
 ]
 

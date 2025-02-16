@@ -5,7 +5,7 @@ dateStart: "01/20/2025"
 dateEnd: "Present"
 ---
 
-At EcoHome, I am actively shaping user experiences and building technology-driven solutions to promote sustainability and community engagement. My work spans across key initiatives:
+At [EcoHome](https://ecohome.one/), I am actively shaping user experiences and building technology-driven solutions to promote sustainability and community engagement. My work spans across key initiatives:
 
 **Alexa-Powered Inventory Automation**
 

@@ -5,7 +5,7 @@ dateStart: "09/06/2024"
 dateEnd: "Present"
 ---
 
-Volunteered with IAN (ian.ong) to support the development and optimization of the platform, progressively contributing as an Alpha Tester and Beta Tester.
+Volunteered at [IAN](https://www.ian.ong/) to support the development and optimization of the platform, progressively contributing as an Alpha Tester and Beta Tester.
 
 - Identified and reported **critical bugs** affecting performance, security, and usability.
 - Provided **UX feedback** to improve interface interactions (auto-scrolling, response delays, and navigation flows).

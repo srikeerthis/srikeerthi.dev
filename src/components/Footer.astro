@@ -1,6 +1,7 @@
 ---
 import { SITE, SOCIALS } from "@consts";
 import Container from "@components/Container.astro";
+const year = new Date().getFullYear();
 ---
 
 <footer class="relative bg-white dark:bg-black">
@@ -83,7 +84,7 @@ import Container from "@components/Container.astro";
           <div
             class="order-2 sm:order-1 flex flex-col items-center justify-center sm:items-start"
           >
-            <div class="text-sm mt-2">&copy; 2024 Srikeerthi Srinivasan</div>
+            <div class="text-sm mt-2">&copy; {year} Srikeerthi Srinivasan</div>
           </div>
 
           <div class="order-1 sm:order-2 flex justify-center sm:justify-end">

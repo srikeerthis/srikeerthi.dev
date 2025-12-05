@@ -10,16 +10,25 @@ type Props = {
 
 export default function Blog({ data, tags }: Props) {
   const [filter, setFilter] = createSignal(new Set<string>())
-  const [posts, setPosts] = createSignal<CollectionEntry<"blog">[]>([])
+  const [posts, setPosts] = createSignal<CollectionEntry<"blog">[]>(data)
 
   createEffect(() => {
-    setPosts(data.filter((entry) => 
-      Array.from(filter()).every((value) => 
-        entry.data.tags.some((tag:string) => 
-          tag.toLowerCase() === String(value).toLowerCase()
+    const activeFilters = Array.from(filter())
+
+    if (activeFilters.length === 0) {
+      setPosts(data)
+      return
+    }
+
+    setPosts(
+      data.filter((entry) =>
+        activeFilters.every((value) =>
+          entry.data.tags.some((tag: string) => 
+            tag.toLowerCase() === String(value).toLowerCase()
+          )
         )
       )
-    ))
+    )
   })
 
   function toggleTag(tag: string) {

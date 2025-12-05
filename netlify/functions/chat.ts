@@ -1,9 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+declare const __dirname: string;
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-const knowledgePath = path.resolve(process.cwd(), "netlify", "knowledge.json");
+const knowledgePath = path.join(__dirname, "knowledge.json");
 
 type KnowledgeItem = {
   id: string;

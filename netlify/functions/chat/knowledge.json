@@ -382,34 +382,76 @@
     "source": "about",
     "title": "About Srikeerthi",
     "url": "/about/about",
-    "text": "About Srikeerthi\n\nOverview of Srikeerthi's background, engineering achievements, open source work, research experience, and career aspirations.\n\nI recently graduated with a _Master's degree in Computer Science_ from the University of Texas at Arlington and I am an _Open Source enthusiast_. I am passionate about solving complex problems through technology and continuously seek opportunities to learn and grow.\n\n## Engineering Achievements"
+    "text": "About Srikeerthi\n\nFull-stack and Machine Learning Engineer with a Master's from UT Arlington. Experienced in building 0-to-1 GenAI platforms, serverless backend architectures, and optimizing ML pipelines.\n\n[cite_start]I recently graduated with a _Master's degree in Computer Science_ from the University of Texas at Arlington[cite: 2]. I am an experienced software engineer who has transitioned from individual contributor to **Technical Lead** roles, with a passion for **Open Source**, **Cloud Architecture (AWS)**, and **Machine Learning**.\n\n## Professional Experience"
   },
   {
     "id": "about:about#2",
     "source": "about",
     "title": "About Srikeerthi",
     "url": "/about/about",
-    "text": "**Hackathons and Competitions**: I have actively participated in numerous hackathons and project competitions, including winning accolades such as the **Smart India Hackathon 2019** and contributing innovative solutions at **HackUTA 2024**.\n\n**Presentation Skills**: My engineering expertise is complemented by strong presentation skills, showcased through my team's presentation at **MozFest** at Ravensbourne University."
+    "text": "**Cleverstreet.AI (Technical Lead)**\n* [cite_start]**Role:** Architected and shipped a \"0→1\" Gen-AI video platform in just **2 months**[cite: 20].\n* [cite_start]**Tech Stack:** Python, FastAPI, Next.js, PostgreSQL, Docker, Fly.io, GitHub Actions[cite: 23].\n* **Impact:** Built the full-stack system, including payment infrastructure (Stripe) and CI/CD pipelines. [cite_start]Optimized system performance by tuning latency for the FastAPI backend[cite: 20, 22]."
   },
   {
     "id": "about:about#3",
     "source": "about",
     "title": "About Srikeerthi",
     "url": "/about/about",
-    "text": "**Event Participation**: I have organized and participated in various events and workshops, including the **Common Voice Sprint**, **Google Summer of Code**, and **Open Source Day**, fostering community engagement and collaboration."
+    "text": "**ecohome.one LLC (Software Developer)**\n* [cite_start]**Role:** Engineered an end-to-end voice-activated agent using **Amazon Alexa** and **LLMs** to parse e-receipts[cite: 26].\n* [cite_start]**Architecture:** Designed a scalable, serverless backend using **Node.js on AWS Lambda** and **SQS** for fault-tolerant asynchronous processing[cite: 27].\n* [cite_start]**Security:** Implemented a secure **OAuth 2.0** authentication flow to link user email accounts with the Alexa skill, ensuring data privacy[cite: 27]."
   },
   {
     "id": "about:about#4",
     "source": "about",
     "title": "About Srikeerthi",
     "url": "/about/about",
-    "text": "**Open Source Contributions**: As an officer at the [Open Source Lab](https://osl.netlify.app) and [MOBI](https://codewith.mobi/), I promoted open source development and contributed significantly to various projects. Currently, I am volunteering at [IAN](https://www.ian.ong/) as an Open Source Contributor and Beta Tester, where I play a critical role in platform optimization and documentation."
+    "text": "**Scientist Technologies (Machine Learning Engineer)**\n* [cite_start]**Impact:** Engineered \"AI Physio,\" a computer vision pipeline that automated patient exercise validation, reducing delivery costs by **5%** for over **1,000 users**[cite: 31].\n* [cite_start]**Optimization:** Pioneered a custom object detection model for medical device readings using **TensorFlow**, achieving **95% accuracy** after pivoting from an inefficient OCR framework[cite: 32].\n\n## Technical Projects & Hackathons"
   },
   {
     "id": "about:about#5",
     "source": "about",
     "title": "About Srikeerthi",
     "url": "/about/about",
-    "text": "**Research Experience**: As a Research Assistant at [SEAR Lab](https://searlab.uta.edu/), UTA, I contributed to cutting-edge projects, leveraging my expertise in geospatial data analysis and machine learning.\n\n## Career Aspirations\n\nI am currently seeking a role as a **Software Engineer** specializing in **Machine Learning** or **Backend Development**. I aim to contribute to innovative solutions and work with a team that values collaboration, creativity, and impactful technology."
+    "text": "**Candidate Search Application (HackUTA 2024)**\n* [cite_start]**Solution:** Architected a search engine using **OpenAI embeddings** and a **FAISS vector index** to match natural language queries against candidate profiles[cite: 50].\n* [cite_start]**Result:** Achieved **95% accuracy** in matching queries and developed a responsive Streamlit UI for recruiters[cite: 50, 51]."
+  },
+  {
+    "id": "about:about#6",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**Smart India Hackathon 2019 (Winner)**\n* [cite_start]**Challenge:** Solved a complex logistics problem for optimizing container packing to reduce shipping costs[cite: 46].\n* [cite_start]**Solution:** Architected a real-time **3D animated guide** using **C# and Unity Engine**, translating complex algorithms into visual workflows for factory workers[cite: 46, 47].\n* [cite_start]**Leadership:** successfully advocated for tackling this difficult problem statement despite initial team hesitation (\"Have Backbone\"), leading the team to a national win[cite: 443, 447]."
+  },
+  {
+    "id": "about:about#7",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**AR Lego Guide (Research)**\n* [cite_start]**Tech:** Developed an Augmented Reality prototype for **Meta Quest 3** using **Unity 3D** and **C#**[cite: 42, 43].\n* [cite_start]**Innovation:** Implemented hand-gesture controls and 3D animations to assist in human factors research[cite: 44].\n\n## Open Source & Community Leadership"
+  },
+  {
+    "id": "about:about#8",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**MOBI (Officer & Lead)**\n* **Initiative:** Led the club's AI/ML initiatives. [cite_start]Built a Proof-of-Concept using the **Donut model** (Hugging Face) to perform Document Question Answering on tabletop RPG rulebooks, solving a \"hallucination\" problem common in standard LLMs[cite: 213, 218, 228].\n* [cite_start]**Impact:** This initiative led to my promotion from general member to Officer[cite: 228]."
+  },
+  {
+    "id": "about:about#9",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**Community Engagement**\n* [cite_start]**Roles:** Officer at [Open Source Lab](https://osl.netlify.app) and Volunteer at [IAN](https://www.ian.ong/) (Platform optimization and documentation)[cite: 7, 8].\n* [cite_start]**Events:** Organized **Common Voice Sprint**, **Google Summer of Code** sessions, and **MozFest** presentations[cite: 5, 6].\n\n## Technical Skills"
+  },
+  {
+    "id": "about:about#10",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "* [cite_start]**Languages:** Python, JavaScript, C#, SQL[cite: 36].\n* [cite_start]**Cloud (AWS):** Lambda, SQS, S3, API Gateway, Secrets Manager, CloudWatch[cite: 39].\n* [cite_start]**Frameworks:** FastAPI, Next.js, React, Node.js, Django, Flask[cite: 37].\n* [cite_start]**AI/ML:** TensorFlow, PyTorch, OpenCV, LLM Integration (Gemini, OpenAI), LangChain, Vector Search (FAISS)[cite: 40].\n* [cite_start]**DevOps:** Docker, GitHub Actions, Fly.io, CI/CD[cite: 38].\n\n## Career Aspirations"
+  },
+  {
+    "id": "about:about#11",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "I am seeking a role as a **Software Engineer** specializing in **Machine Learning** or **Backend Development**. [cite_start]I thrive in environments that require solving complex architectural challenges—such as building serverless pipelines or optimizing ML models for edge devices—and value a culture of open collaboration and technical excellence[cite: 10, 11].\n\n## Contact\n\n- **Email**: srikeerthi.vs@gmail.com\n- **LinkedIn**: https://www.linkedin.com/in/srikeerthis\n- **GitHub**: https://github.com/srikeerthis"
   }
 ]

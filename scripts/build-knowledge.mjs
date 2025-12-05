@@ -9,7 +9,7 @@ const sources = [
   { dir: "src/content/blog", type: "blog", base: "/blog" },
   { dir: "src/content/projects", type: "projects", base: "/projects" },
   { dir: "src/content/work", type: "work", base: "/work" },
-  { dir: "src/content/about", type: "about", base: "/about" }
+  { dir: "src/content/about", type: "about", base: "/about" },
 ];
 
 function slugFromFilename(file) {
@@ -112,7 +112,7 @@ async function collect() {
     }
   }
 
-  const outDir = path.join(root, "netlify");
+  const outDir = path.join(root, "netlify", "functions", "chat");
   await fs.mkdir(outDir, { recursive: true });
   const outFile = path.join(outDir, "knowledge.json");
   await fs.writeFile(outFile, JSON.stringify(items, null, 2), "utf8");

@@ -1,0 +1,415 @@
+[
+  {
+    "id": "blog:01-overview-of-open-source-development#1",
+    "source": "blog",
+    "title": "Overview of Open Source Development",
+    "url": "/blog/01-overview-of-open-source-development",
+    "text": "Overview of Open Source Development\n\nLearn how to begin the journey in open source development in Bachelors\n\n## What is the purpose of this blog?\n\nI will share a mistake that significantly impacted my life. Excited by the Open Source Community, I worked on unfinished projects with shallow knowledge in my first 2 years. Future developers should set timelines and follow them rigorously.\n\n## Disclaimer:\n    The following timeline is for those pursuing engineering and is a personal opinion!"
+  },
+  {
+    "id": "blog:01-overview-of-open-source-development#2",
+    "source": "blog",
+    "title": "Overview of Open Source Development",
+    "url": "/blog/01-overview-of-open-source-development",
+    "text": "## 1st Year\n### Learn how the web works\nLearn HTML, CSS, and JavaScript. Refer to Mozilla documentation and YouTube for help.\n\n### Learn an Object-Oriented Programming language\nStrengthen your skills in one core language like C++, Java, or Python before contributing to open-source projects.\n\n### Learn Git\nGit is essential for version control and project management.\n\n### Check out Stack Overflow\nFind solutions to coding issues on Stack Overflow.\n\n### Explore different domains\nExplore trending domains in Computer Science:"
+  },
+  {
+    "id": "blog:01-overview-of-open-source-development#3",
+    "source": "blog",
+    "title": "Overview of Open Source Development",
+    "url": "/blog/01-overview-of-open-source-development",
+    "text": "Artificial Intelligence (AI)\n    Cloud/DevOps\n    Ethical Hacking\n    Internet Of Things (IoT)\n    Virtual Reality (VR)/Augmented Reality (AR)\n    Web Development\n    Mobile App Development\n\n## 2nd Year\n### Create a simple application using OOPs\nBuild an application to boost confidence and learn new languages.\n\n### Participate in Hackathons and Conferences\nHackathons and conferences are great for networking and staying updated with trends.\n\n### Explore open source projects\nGain experience and connect with senior developers by contributing to open-source projects."
+  },
+  {
+    "id": "blog:01-overview-of-open-source-development#4",
+    "source": "blog",
+    "title": "Overview of Open Source Development",
+    "url": "/blog/01-overview-of-open-source-development",
+    "text": "## 3rd Year\n### Conduct an event or workshop\nImprove management and communication skills by conducting events.\n\n### GSoC\nParticipate in Google Summer of Code to work on projects and earn a stipend.\n\n### Build a resume\nCreate a resume highlighting your achievements and experiences.\n\n## 4th Year\n\n### Strengthen the foundation for interviews\nPrepare thoroughly for job interviews.\n\n### Continue contribution and promote open source projects!\nContribute and promote open source development to benefit future developers."
+  },
+  {
+    "id": "blog:01-overview-of-open-source-development#5",
+    "source": "blog",
+    "title": "Overview of Open Source Development",
+    "url": "/blog/01-overview-of-open-source-development",
+    "text": "## Conclusion\nHopefully, this timeline is useful for everyone. Enjoy every moment, as life will have its surprises. If a goal is not achieved, don't be discouraged! Find a new path and go ahead!\n\n##\n    Enjoy every moment, as life will have its surprises. \n    So if a goal is not achieved DON’T BE DISCOURAGED! \n    Realize a new path and go ahead!"
+  },
+  {
+    "id": "blog:02-ETL-process#1",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "Building an ETL Pipeline with AWS: From CSV to DynamoDB\n\nLearn how to build a simple ETL pipeline using AWS services to transform and load data from a CSV file into a DynamoDB table.\n\n## Introduction\n\nIn the world of data processing, ETL (Extract, Transform, Load) pipelines are fundamental for moving and transforming data from one system to another. In this blog, we will walk you through creating a simple ETL pipeline using AWS services. We will start with a CSV file, upload it to an S3 bucket, process it with a Python script, and store the data in a DynamoDB table."
+  },
+  {
+    "id": "blog:02-ETL-process#2",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "You can find the complete code for this project on [GitHub](https://github.com/srikeerthis/etl-process).\n\n## Prerequisites\n\nBefore we dive into the steps, ensure you have the following:\n\n1. An AWS account.\n2. Basic knowledge of Python.\n3. AWS CLI installed and configured with your credentials.\n4. boto3 and dotenv Python packages installed.\n\n### Step 1: Download Sample File\n\nFirst, download a sample CSV file that we will use as the source data for our ETL process. This file will contain the data we want to process and store in DynamoDB.\n\n### Step 2: Create an S3 Bucket"
+  },
+  {
+    "id": "blog:02-ETL-process#3",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "#### Create AWS Account and S3 Bucket\n\n1. Create an AWS account if you don't already have one.\n2. Create an S3 bucket:\n\n- Go to the S3 console.\n   - Click on \"Create bucket\".\n   - Enter a unique bucket name, for example, etlprocess-files.\n   - Choose the region closest to you.\n   - Click \"Create bucket\".\n\n### Step 3: Upload File to S3\n\nUpload your CSV file to the S3 bucket you just created. You can do this through the AWS Management Console or using the AWS CLI.\n\n### Step 4: Configure IAM Roles and Policies\n\n#### Create IAM Group and User\n\n1. Create an IAM Group:"
+  },
+  {
+    "id": "blog:02-ETL-process#4",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "- Go to the IAM console.\n- Click \"Create group\" and give it a name, for example, etl-process-group.\n- Attach the following policies:\n  - AmazonS3FullAccess\n  - AmazonDynamoDBFullAccess\n- Click \"Create Group\".\n\n2. Create an IAM User:"
+  },
+  {
+    "id": "blog:02-ETL-process#5",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "- Go to the IAM console.\n- Click \"Create user\".\n- Enter a username, for example, etl-user.\n- Select \"Programmatic access\".\n- Add the user to the etl-process-group.\n- Click \"Next: Permissions\" and then \"Next: Tags\" and \"Next: Review\".\n- Click \"Create user\" and download the access key and secret key.\n  > Note: Store these keys securely as the secret key will only be shown once.\n\n### Step 5: Set Up Your Environment\n\nCreate a .env file in your project directory and add the following environment variables:"
+  },
+  {
+    "id": "blog:02-ETL-process#6",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "```\nAWS_ACCESS_KEY_ID=your-access-key-id\nAWS_SECRET_ACCESS_KEY=your-secret-access-key\nAWS_DEFAULT_REGION=your-region\nBUCKET=etlprocess-files\nFILENAME=your-filename.csv\nTABLE_NAME=users\n```\n\n### Step 6: Install Required Python Packages\n\nSet up a virtual environment and install the required packages:\n\n```\npython3 -m venv env\nsource env/bin/activate\npip install boto3 python-dotenv pandas\n```\n\n### Step 7: Create and Run the ETL Script\n\n#### ETL Script\n\nCreate a Python script named main.py to perform the ETL process:"
+  },
+  {
+    "id": "blog:02-ETL-process#7",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "```\nimport boto3\nimport os\nfrom dotenv import load_dotenv\nimport pandas as pd\nfrom io import StringIO\nfrom botocore.exceptions import ClientError\nfrom decimal import Decimal\n\n# Load environment variables from .env file\nload_dotenv('env.env')\n\n# Initialize S3 client with credentials from environment variables\ns3 = boto3.client('s3',\n    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),\n    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),\n    region_name=os.getenv('AWS_DEFAULT_REGION'))"
+  },
+  {
+    "id": "blog:02-ETL-process#8",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "# Get bucket name and file name from environment variables\nbucket_name = os.getenv('BUCKET')\nfile_name = os.getenv('FILENAME')\n\n# Get the object from S3\ndata = s3.get_object(Bucket=bucket_name, Key=file_name)\ncontents = data['Body'].read().decode(\"utf-8\")\n\n# Read the CSV data into a pandas DataFrame\ncsv_data = StringIO(contents)\ndf = pd.read_csv(csv_data)\n\n# Filter out rows with NaN or infinity values\ndf = df.replace([pd.NA, float('inf'), float('-inf')], pd.NA).dropna()\n\n# Convert DataFrame to a list of dictionaries\nitems = df.to_dict(orient=\"records\")"
+  },
+  {
+    "id": "blog:02-ETL-process#9",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "# Function to convert floats to Decimals\ndef convert_to_decimal(item):\n    for key, value in item.items():\n        if isinstance(value, float):\n            item[key] = Decimal(str(value))\n        elif isinstance(value, list):\n            item[key] = [Decimal(str(v)) if isinstance(v, float) else v for v in value]\n    return item\n\n# Convert all float values in items to Decimal\nitems = [convert_to_decimal(item) for item in items]"
+  },
+  {
+    "id": "blog:02-ETL-process#10",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "# Initialize DynamoDB resource with credentials from environment variables\ndynamodb = boto3.resource(\n    'dynamodb',\n    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),\n    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),\n    region_name=os.getenv('AWS_DEFAULT_REGION')\n)\n\n# Reference the DynamoDB table using environment variable\ntable = dynamodb.Table(os.getenv('TABLE_NAME'))"
+  },
+  {
+    "id": "blog:02-ETL-process#11",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "# Store each item in the DynamoDB table\nfor item in items:\n    try:\n        table.put_item(Item=item)\n        print(f\"Item added: {item}\")\n    except ClientError as e:\n        print(f\"Error adding item: {e.response['Error']['Message']}\")\n\nprint(\"Items processing completed!\")\n```\n\nRun the script:\n\n```\npython3 main.py\n```\n\n### Step 8: Retrieve Data from DynamoDB\n\nCreate a script named view_table.py to scan and retrieve data from the DynamoDB table:\n\n```\nimport boto3\nimport os\nfrom dotenv import load_dotenv\n\n# Load environment variables from .env file\nload_dotenv('env.env')"
+  },
+  {
+    "id": "blog:02-ETL-process#12",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "# Initialize a session using Amazon DynamoDB\ndynamodb = boto3.resource(\n    'dynamodb',\n    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),\n    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),\n    region_name=os.getenv('AWS_DEFAULT_REGION')  # Ensure region is specified\n)\n\n# Reference the DynamoDB table\ntable = dynamodb.Table(os.getenv('TABLE_NAME'))  # Ensure table name matches your DynamoDB table\n\n# Scan the table\nresponse = table.scan()\ndata = response['Items']\n\n# Print the retrieved data\nfor item in data:\n    print(item)\n```\n\nRun the script:\n\n```\npython3 view_table.py\n```"
+  },
+  {
+    "id": "blog:02-ETL-process#13",
+    "source": "blog",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/blog/02-ETL-process",
+    "text": "## Conclusion\n\nIn this blog, we've walked through the process of setting up a simple ETL pipeline using AWS services. By leveraging S3 for storage, DynamoDB for a NoSQL database, and Python for scripting, we created a robust solution for processing and managing data. This approach can be extended and scaled to handle more complex data processing tasks.\n\nFeel free to experiment and enhance the pipeline to suit your specific requirements. Happy coding!\n\nYou can find the complete code for this project on [GitHub](https://github.com/srikeerthis/etl-process)."
+  },
+  {
+    "id": "blog:03-image-segmentation#1",
+    "source": "blog",
+    "title": "Image Segmentation",
+    "url": "/blog/03-image-segmentation",
+    "text": "Image Segmentation\n\nLearn about the different types of image segmentation techniques\n\n### Introduction\n\nImage segmentation is a crucial technique in computer vision that involves partitioning an image into meaningful segments. This blog will explore the concept of segmentation, explain what superpixels are, and detail the different types of segmentation techniques: semantic segmentation, instance segmentation, and panoptic segmentation.\n\n### What is Segmentation?"
+  },
+  {
+    "id": "blog:03-image-segmentation#2",
+    "source": "blog",
+    "title": "Image Segmentation",
+    "url": "/blog/03-image-segmentation",
+    "text": "Image segmentation is the process of partitioning an image into groups of similar pixels, which helps to simplify or change the representation of an image into something more meaningful and easier to analyze.\n\n### What are Superpixels?\n\nSuperpixels are clusters of pixels grouped together based on similarity in color, texture, or other low-level features. They serve as the building blocks for segmentation, providing a more efficient representation of the image.\n\n![super pixels](./superpixels.jpeg)\n\n### Types of Segmentation"
+  },
+  {
+    "id": "blog:03-image-segmentation#3",
+    "source": "blog",
+    "title": "Image Segmentation",
+    "url": "/blog/03-image-segmentation",
+    "text": "- **Semantic Segmentation**\n- **Instance Segmentation**\n- **Panoptic Segmentation**\n\n![types of segmentation](./types_of_segmentation.png)\n\n### Semantic Segmentation\n\nSemantic segmentation involves assigning a label to every pixel in an image. Each pixel is classified as belonging to a particular class, such as \"cat,\" \"dog,\" \"car,\" etc. This method does not differentiate between different instances of the same class.\n\n### Instance Segmentation"
+  },
+  {
+    "id": "blog:03-image-segmentation#4",
+    "source": "blog",
+    "title": "Image Segmentation",
+    "url": "/blog/03-image-segmentation",
+    "text": "Instance segmentation is similar to object detection but goes a step further by providing a mask that outlines the object, rather than just a bounding box. This technique is used to delineate the boundaries of each object instance in the image, allowing for the identification of multiple objects from the same class.\n\n### Panoptic Segmentation"
+  },
+  {
+    "id": "blog:03-image-segmentation#5",
+    "source": "blog",
+    "title": "Image Segmentation",
+    "url": "/blog/03-image-segmentation",
+    "text": "Panoptic segmentation is a combination of both semantic and instance segmentation. It assigns a class to every pixel, and if there are multiple instances of a class, it distinguishes which pixels belong to which instance. This comprehensive approach ensures that each object is uniquely identified and classified.\n\n### Conclusion\n\nImage segmentation is a powerful tool in computer vision, enabling more accurate image analysis and interpretation. Understanding the different types of segmentation techniques is essential for various applications, from medical imaging to autonomous driving."
+  },
+  {
+    "id": "projects:2Dto3D#1",
+    "source": "projects",
+    "title": "2D to 3D: Transforming 2D Maps into 3D Neighborhood Models",
+    "url": "/projects/2Dto3D",
+    "text": "2D to 3D: Transforming 2D Maps into 3D Neighborhood Models\n\nDiscover how to create a 3D neighborhood model from 2D maps using computer vision techniques.\n\n## Introduction\nThe goal of this project is to develop a robust methodology for transforming 2D Sanborn maps into 3D neighborhood models. The process involves:\n\n- Identifying building footprints\n- Classifying building types\n- Estimating the number of stories\n- Providing a visual representation of the recognized structures\n\n## Methodology\n![Pipeline](./Flowchart.png)\n<p align=\"center\"><i>Implementation Pipeline</i></p>"
+  },
+  {
+    "id": "projects:2Dto3D#2",
+    "source": "projects",
+    "title": "2D to 3D: Transforming 2D Maps into 3D Neighborhood Models",
+    "url": "/projects/2Dto3D",
+    "text": "### Step 1: Edge Detection\nWe begin with an input image of a Sanborn map. Edge detection is performed to identify the building footprints.\n\n### Step 2: Template Matching\nThe detected edges are sent to a template matching function to identify the type of building and estimate the number of stories.\n\n### Step 3: Color Identification\nSimultaneously, the detected edges are processed using the KMeans algorithm to identify the color of the buildings. This involves processing the pixels within the region demarcated by the detected edges."
+  },
+  {
+    "id": "projects:2Dto3D#3",
+    "source": "projects",
+    "title": "2D to 3D: Transforming 2D Maps into 3D Neighborhood Models",
+    "url": "/projects/2Dto3D",
+    "text": "### Step 4: 3D Projection\nFinally, the processed data is projected to create the final 3D plot, giving a visual representation of the neighborhood.\n\n![Sample footprint](./4_buildings.jpg \"Sanborn Map\")\n<p align=\"center\"><i>Sanborn Map</i></p>\n\n## Results\nThe end result is a 3D representation of the neighborhood, showcasing the identified structures with their respective attributes.\n\n![Output](./3D_4_buildings.jpg \"3D Representation\")\n<p align=\"center\"><i>3D Representation</i></p>"
+  },
+  {
+    "id": "projects:2Dto3D#4",
+    "source": "projects",
+    "title": "2D to 3D: Transforming 2D Maps into 3D Neighborhood Models",
+    "url": "/projects/2Dto3D",
+    "text": "## Conclusion\nThis methodology provides an efficient way to convert 2D Sanborn maps into 3D models, facilitating better visualization and analysis of neighborhood structures."
+  },
+  {
+    "id": "projects:Candidate Search Application#1",
+    "source": "projects",
+    "title": "Building Lessume: A Candidate Search Applicatoin",
+    "url": "/projects/Candidate Search Application",
+    "text": "Building Lessume: A Candidate Search Applicatoin\n\nLessume is a web application that streamlines resume management and candidate search. It uses AI to extract key insights from resumes, stores data securely in MongoDB, and enables recruiters to perform semantic searches powered by OpenAI models.\n\n## Project Overview\n\nLessume is a project built during HackUTA 2024 to tackle a common problem: simplifying the process of finding the right candidates for a job. It combines AI-driven text analysis with a user-friendly interface to make resume management seamless for both candidates and recruiters."
+  },
+  {
+    "id": "projects:Candidate Search Application#2",
+    "source": "projects",
+    "title": "Building Lessume: A Candidate Search Applicatoin",
+    "url": "/projects/Candidate Search Application",
+    "text": "## How it works:\n\n### Candidate View\n\n- Upload your resume in PDF format.\n- Fill out a structured form with personal and job-specific information.\n- Submit the resume for analysis and storage.\n\n### Recruiter View\n\n- Search for the perfect candidate using natural language queries.\n- Get results that match skills, qualifications, and other criteria.\n\n## Key Features"
+  },
+  {
+    "id": "projects:Candidate Search Application#3",
+    "source": "projects",
+    "title": "Building Lessume: A Candidate Search Applicatoin",
+    "url": "/projects/Candidate Search Application",
+    "text": "- **AI-Powered Analysis**: Extracts skills, experience, and insights using OpenAI GPT models.\n- **Semantic Search**: Helps recruiters find candidates with precision using natural language.\n- **Easy Integration**: Stores resumes and data in a cloud-based MongoDB database.\n\n## Technologies Used"
+  },
+  {
+    "id": "projects:Candidate Search Application#4",
+    "source": "projects",
+    "title": "Building Lessume: A Candidate Search Applicatoin",
+    "url": "/projects/Candidate Search Application",
+    "text": "- **Frontend**: [Streamlit](https://streamlit.io/)\n- **Backend**:\n  - [MongoDB](https://www.mongodb.com/) for database storage.\n  - [OpenAI GPT-4](https://openai.com/) for resume analysis and embeddings.\n- **Python Libraries**:\n  - `pymongo` for MongoDB integration.\n  - `PyPDF2` for PDF text extraction.\n  - `scikit-learn` for cosine similarity calculations.\n\n## Lessons Learned\n\n1. **AI Integration**:\n\n- Implemented OpenAI GPT models for extracting insights from text data.\n   - Learned how embeddings can power semantic search to match resumes with job descriptions effectively."
+  },
+  {
+    "id": "projects:Candidate Search Application#5",
+    "source": "projects",
+    "title": "Building Lessume: A Candidate Search Applicatoin",
+    "url": "/projects/Candidate Search Application",
+    "text": "2. **Database Management**:\n\n- Designed and implemented a MongoDB schema to store resumes, form data, and embeddings.\n   - Gained experience with MongoDB Atlas for secure cloud-based database management.\n\n3. **Streamlit Development**:\n\n- Built an interactive user interface for both candidates and recruiters.\n   - Streamlined user workflows for uploading resumes, submitting forms, and searching for candidates.\n\n4. **Collaboration and Project Management**:\n\n- Worked on managing a project timeline effectively.\n   - Communicated technical challenges and solutions within a team setting."
+  },
+  {
+    "id": "projects:Candidate Search Application#6",
+    "source": "projects",
+    "title": "Building Lessume: A Candidate Search Applicatoin",
+    "url": "/projects/Candidate Search Application",
+    "text": "5. **Full-Stack Application Development**:\n   - Combined frontend, backend, and AI models into a cohesive application.\n   - Handled API integration, environment configuration, and dependency management effectively.\n\n## Challenges\n\n- Diverse Resume Formats: Tackled inconsistency using PDF text extraction and AI analysis.\n- Scalable Search: Used embeddings and cosine similarity for accurate and efficient results.\n\n## Future Enhancements"
+  },
+  {
+    "id": "projects:Candidate Search Application#7",
+    "source": "projects",
+    "title": "Building Lessume: A Candidate Search Applicatoin",
+    "url": "/projects/Candidate Search Application",
+    "text": "- Advanced Filters: Add options like location or experience level.\n- Interactive Dashboards: Give recruiters better insights through data visualizations.\n- Resume Feedback: Help candidates improve their resumes with AI-driven suggestions.\n\n## Repository\n\nLessume isn’t just a project—it’s a step towards smarter, AI-powered recruitment. It’s a testament to what can be accomplished in a weekend with teamwork, innovation, and the right tools\n\nFind the complete source code and additional documentation on [GitHub](https://github.com/srikeerthis/resume_connect)."
+  },
+  {
+    "id": "projects:ETL Pipeline#1",
+    "source": "projects",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/projects/ETL Pipeline",
+    "text": "Building an ETL Pipeline with AWS: From CSV to DynamoDB\n\nDeveloped a simple ETL pipeline using AWS services to transform and load data from a CSV file into a DynamoDB table. This project showcases the integration of AWS S3 and DynamoDB using Python scripts, demonstrating capabilities in cloud-based data processing.\n\n## Project Overview\n### Objective\n\nThe goal was to create an ETL pipeline that extracts data from a CSV file stored in an S3 bucket, transforms it to ensure data integrity, and loads it into a DynamoDB table."
+  },
+  {
+    "id": "projects:ETL Pipeline#2",
+    "source": "projects",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/projects/ETL Pipeline",
+    "text": "### Steps performed\n1. Download Sample File: Obtained a sample CSV file for processing.\n2. Create an S3 Bucket: Created an S3 bucket named etlprocess-files to store the CSV file.\n3. Upload CSV to S3: Uploaded the CSV file to the S3 bucket using AWS Management Console.\n4. Configure IAM Roles and Policies:\n    - Created an IAM group etl-process-group with AmazonS3FullAccess and AmazonDynamoDBFullAccess policies.\n    - Created an IAM user etl-user, added to the group, and generated access keys.\n5. Set Up Environment:\n    - Created a .env file with AWS credentials and configuration.\n    - Set up a virtual environment and installed boto3, python-dotenv, and pandas.\n6. Develop and Run ETL Script:\n    - Wrote main.py to extract data from S3, transform it, and load it into DynamoDB.\n    - Ran the script to perform the ETL process.\n7. Retrieve Data from DynamoDB:\n    - Wrote view_table.py to scan and retrieve data from the DynamoDB table.\n    - Ran the script to display the data."
+  },
+  {
+    "id": "projects:ETL Pipeline#3",
+    "source": "projects",
+    "title": "Building an ETL Pipeline with AWS: From CSV to DynamoDB",
+    "url": "/projects/ETL Pipeline",
+    "text": "## Skills Demonstrated\n\n- AWS Cloud Services (S3, DynamoDB)\n- Python Programming\n- Data Processing and Transformation\n- ETL Pipeline Development\n- Working with IAM Policies and Roles\n\n## Conclusion\n\nThis project successfully demonstrated the creation of a cloud-based ETL pipeline using AWS services. The integration of S3 and DynamoDB with Python scripting provided a robust solution for data processing and management. This project highlights the ability to handle scalable and efficient data processing tasks in a cloud environment."
+  },
+  {
+    "id": "projects:Essay evaluator#1",
+    "source": "projects",
+    "title": "Essay Evaluator",
+    "url": "/projects/Essay evaluator",
+    "text": "Essay Evaluator\n\nDeveloped a web-based application to assess essays using the OpenAI ChatGPT API, leveraging Django for backend operations.\n\nThe Essay Evaluator is a dynamic web application that utilizes the OpenAI ChatGPT 3.5 model to analyze and score essays submitted by users. This tool provides immediate feedback on various aspects of the essay, including:"
+  },
+  {
+    "id": "projects:Essay evaluator#2",
+    "source": "projects",
+    "title": "Essay Evaluator",
+    "url": "/projects/Essay evaluator",
+    "text": "- Relevance: Assesses how closely the content of the essay aligns with the given title.\n- Spelling Accuracy: Identifies and counts spelling errors, highlighting the words affected.\n- Content Feedback: Offers comprehensive feedback to enhance the quality of the writing.\n\nTechnical Implementation:"
+  },
+  {
+    "id": "projects:Essay evaluator#3",
+    "source": "projects",
+    "title": "Essay Evaluator",
+    "url": "/projects/Essay evaluator",
+    "text": "- Backend: Developed using Django, the application interfaces seamlessly with the OpenAI API to process and evaluate essays. The results, along with the essays themselves, are stored efficiently in the Django ORM database.\n- Frontend: Designed a user-friendly interface with HTML and CSS, ensuring a smooth user experience for essay submission and review.\n\nKey Contributions:"
+  },
+  {
+    "id": "projects:Essay evaluator#4",
+    "source": "projects",
+    "title": "Essay Evaluator",
+    "url": "/projects/Essay evaluator",
+    "text": "- Integrated OpenAI’s advanced natural language processing technology to provide detailed assessments of textual content.\n- Engineered the application’s backend with Django, facilitating robust data management and API interactions.\n- Crafted a clean, intuitive frontend, enabling easy navigation and interaction for users."
+  },
+  {
+    "id": "projects:Meal Data Scrapping#1",
+    "source": "projects",
+    "title": "Advanced Meal Data Scraping",
+    "url": "/projects/Meal Data Scrapping",
+    "text": "Advanced Meal Data Scraping\n\nUtilizing advanced web scraping techniques to automate the collection of recipe data from diverse websites, creating a detailed and comprehensive recipe database.\n\nProject Overview:\nDeveloped an advanced tool to automate the extraction of meal data from various culinary websites using the Scrapy framework. This project enhances the efficiency of dietary planning and analysis by providing detailed insights into meal composition.\n\nTechnical Skills and Tools:"
+  },
+  {
+    "id": "projects:Meal Data Scrapping#2",
+    "source": "projects",
+    "title": "Advanced Meal Data Scraping",
+    "url": "/projects/Meal Data Scrapping",
+    "text": "- Web Scraping: Utilized Python with the Scrapy framework to create custom spiders for targeted data extraction from multiple culinary websites.\n  - Data Handling: Implemented data pipelines in Python to process, store, and manage large datasets in MongoDB, ensuring data integrity and security.\n  - Software Development: Structured and maintained a robust directory architecture to facilitate easy installation, operation, and scalability of the scraping tool.\n  - Database Management: Configured MongoDB for data storage, creating an efficient system for querying and managing scraped meal information.\n  - Problem Solving: Devised solutions for resuming interrupted scraping sessions, enhancing data collection efficiency without data loss."
+  },
+  {
+    "id": "projects:Meal Data Scrapping#3",
+    "source": "projects",
+    "title": "Advanced Meal Data Scraping",
+    "url": "/projects/Meal Data Scrapping",
+    "text": "Impact:\n\n- Enabled dieticians and nutrition experts to access a consolidated database of meal information, streamlining nutritional analysis and meal planning.\n  - Contributed to data-driven decision-making in dietary management by providing comprehensive, accurate meal data."
+  },
+  {
+    "id": "work:IAN#1",
+    "source": "work",
+    "title": "IAN",
+    "url": "/work/IAN",
+    "text": "IAN\n\nVolunteered at [IAN](https://www.ian.ong/) to support the development and optimization of the platform, progressively contributing as an Alpha Tester and Beta Tester."
+  },
+  {
+    "id": "work:IAN#2",
+    "source": "work",
+    "title": "IAN",
+    "url": "/work/IAN",
+    "text": "- Identified and reported **critical bugs** affecting performance, security, and usability.\n- Provided **UX feedback** to improve interface interactions (auto-scrolling, response delays, and navigation flows).\n- Suggested and tested **feature enhancements** including query editing, search options, and admin notifications.\n- Contributed to **first-round documentation**, detailing platform architecture, features, and usage guidelines."
+  },
+  {
+    "id": "work:University of Texas at Arlington#1",
+    "source": "work",
+    "title": "University of Texas at Arlington",
+    "url": "/work/University of Texas at Arlington",
+    "text": "University of Texas at Arlington\n\nWorked as Research Assistant at Sustainable Equity Allocation Resources [SEAR Lab](https://searlab.uta.edu/). Here I got exposed to ArcGIS a Geospatial Information Systems software and analytics platform. Improved my research skills and shared knowledge on GIS to peers."
+  },
+  {
+    "id": "work:University of Texas at Arlington#2",
+    "source": "work",
+    "title": "University of Texas at Arlington",
+    "url": "/work/University of Texas at Arlington",
+    "text": "- Conducted **EV range analysis** using **ArcGIS Pro**, mapping the maximum coverage area of various electric vehicles on a single charge across the U.S.\n- Reconstructed **3D neighborhood layouts** from **2D LiDAR data** using deep learning techniques with **90% accuracy**.\n- Investigated and analyzed **critical infrastructure** in Texas, highlighting **income and demography-based** accessibility.\n\n**Key Technologies**: ArcGIS Pro, GIS, LiDAR, Deep Learning"
+  },
+  {
+    "id": "work:ecohome.one#1",
+    "source": "work",
+    "title": "ecohome.one",
+    "url": "/work/ecohome.one",
+    "text": "ecohome.one\n\nAt [EcoHome](https://ecohome.one/), I am actively shaping user experiences and building technology-driven solutions to promote sustainability and community engagement. My work spans across key initiatives:\n\n**Alexa-Powered Inventory Automation**\n\n- Developed an Alexa Skill to extract receipts from emails and securely store inventory data with user consent.\n- Engineered the backend using **AWS Lambda, SQS, and MongoDB** to ensure fast, reliable data processing.\n- Integrated **Gemini AI** for intelligent data extraction and **AWS Elastic Cache** to optimize performance."
+  },
+  {
+    "id": "work:ecohome.one#2",
+    "source": "work",
+    "title": "ecohome.one",
+    "url": "/work/ecohome.one",
+    "text": "**Non-Profit Donation Platform**\n\n- Built a **React & Next.js** web app enabling NGOs to request donated items from individuals and organizations.\n- Designed a user-friendly interface to facilitate seamless donor-NGO interactions and streamline request fulfillment.\n\n**Key Technologies**: Alexa Skill Kit, AWS Lambda, Amazon SQS, Gemini AI, MongoDB, AWS Elastic Cache, React.js, Next.js"
+  },
+  {
+    "id": "work:nestle#1",
+    "source": "work",
+    "title": "nestle",
+    "url": "/work/nestle",
+    "text": "nestle\n\nInterned at one of biggest FMCG's and leading brand in the world. For the first time I exposed my computer science skills in data engineering and analytics in an industrial setting. I utilized the power of google suite to create a reporting system for anomalies in equipment in the factory.\n\n- Created a **web-based** tool to streamline equipment maintenance reporting, boosting operational efficiency by **40%**.\n- Led **training initiatives** that improved workforce productivity by **15%**, optimizing factory processes."
+  },
+  {
+    "id": "work:scientist technologies#1",
+    "source": "work",
+    "title": "scientist technologies",
+    "url": "/work/scientist technologies",
+    "text": "scientist technologies\n\nWorked in a fast paced early stage startup as a [Scientist](https://www.scientisttechnologies.co.uk/). Here I gained experience on agile development, developed knowledge in Computer Vision, researched different models, libraries to create prototype and deploy on the web."
+  },
+  {
+    "id": "work:scientist technologies#2",
+    "source": "work",
+    "title": "scientist technologies",
+    "url": "/work/scientist technologies",
+    "text": "- Deployed a **computer vision** model for **post-joint surgery** exercise analysis, serving **100+ patients** and reducing additional physiotherapy costs by **5%**.\n- Achieved **95% accuracy** interpreting medical device readings with AI, enabling **real-time data transmission** to healthcare providers.\n- Built an **NLP-based diet planner** using **5,000+scraped Indian recipes**, enhancing personalized nutrition plans.\n- Worked with **Python, Flask, AWS EC2, S3, and REST APIs** to develop and maintain scalable software solutions."
+  },
+  {
+    "id": "work:scientist technologies#3",
+    "source": "work",
+    "title": "scientist technologies",
+    "url": "/work/scientist technologies",
+    "text": "**Key Technologies**: Python, Computer Vision, NLP, AWS EC2, S3, Flask, REST APIs"
+  },
+  {
+    "id": "about:about#1",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "About Srikeerthi\n\nOverview of Srikeerthi's background, engineering achievements, open source work, research experience, and career aspirations.\n\nI recently graduated with a _Master's degree in Computer Science_ from the University of Texas at Arlington and I am an _Open Source enthusiast_. I am passionate about solving complex problems through technology and continuously seek opportunities to learn and grow.\n\n## Engineering Achievements"
+  },
+  {
+    "id": "about:about#2",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**Hackathons and Competitions**: I have actively participated in numerous hackathons and project competitions, including winning accolades such as the **Smart India Hackathon 2019** and contributing innovative solutions at **HackUTA 2024**.\n\n**Presentation Skills**: My engineering expertise is complemented by strong presentation skills, showcased through my team's presentation at **MozFest** at Ravensbourne University."
+  },
+  {
+    "id": "about:about#3",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**Event Participation**: I have organized and participated in various events and workshops, including the **Common Voice Sprint**, **Google Summer of Code**, and **Open Source Day**, fostering community engagement and collaboration."
+  },
+  {
+    "id": "about:about#4",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**Open Source Contributions**: As an officer at the [Open Source Lab](https://osl.netlify.app) and [MOBI](https://codewith.mobi/), I promoted open source development and contributed significantly to various projects. Currently, I am volunteering at [IAN](https://www.ian.ong/) as an Open Source Contributor and Beta Tester, where I play a critical role in platform optimization and documentation."
+  },
+  {
+    "id": "about:about#5",
+    "source": "about",
+    "title": "About Srikeerthi",
+    "url": "/about/about",
+    "text": "**Research Experience**: As a Research Assistant at [SEAR Lab](https://searlab.uta.edu/), UTA, I contributed to cutting-edge projects, leveraging my expertise in geospatial data analysis and machine learning.\n\n## Career Aspirations\n\nI am currently seeking a role as a **Software Engineer** specializing in **Machine Learning** or **Backend Development**. I aim to contribute to innovative solutions and work with a team that values collaboration, creativity, and impactful technology."
+  }
+]

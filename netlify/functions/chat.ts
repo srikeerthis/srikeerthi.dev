@@ -1,10 +1,8 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-declare const __dirname: string;
+import knowledge from "./knowledge.json" assert { type: "json" };
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-const knowledgePath = path.join(__dirname, "knowledge.json");
+type KnowledgeItem = (typeof knowledge)[number];
 
 type KnowledgeItem = {
   id: string;
@@ -17,11 +15,6 @@ type KnowledgeItem = {
 type EmbeddingChunk = KnowledgeItem & { embedding: number[] };
 
 let cachedChunks: EmbeddingChunk[] | null = null;
-
-async function loadKnowledge(): Promise<KnowledgeItem[]> {
-  const file = await fs.readFile(knowledgePath, "utf8");
-  return JSON.parse(file);
-}
 
 async function getEmbedding(text: string): Promise<number[]> {
   const res = await fetch(
@@ -57,10 +50,8 @@ function cosineSimilarity(a: number[], b: number[]): number {
 async function ensureChunkEmbeddings(): Promise<EmbeddingChunk[]> {
   if (cachedChunks) return cachedChunks;
 
-  const knowledge = await loadKnowledge();
-
   const withEmbeddings: EmbeddingChunk[] = await Promise.all(
-    knowledge.map(async (item) => ({
+    (knowledge as KnowledgeItem[]).map(async (item) => ({
       ...item,
       embedding: await getEmbedding(item.text),
     }))
@@ -108,7 +99,7 @@ exports.handler = async (event: any) => {
         score: cosineSimilarity(qEmbedding, c.embedding),
       }))
       .sort((a, b) => b.score - a.score)
-      .slice(0, 3);
+      .slice(0, 5);
 
     const context = scored
       .map(

@@ -112,7 +112,7 @@ async function collect() {
     }
   }
 
-  const outDir = path.join(root, "netlify", "functions", "chat");
+  const outDir = path.join(root, "netlify", "functions");
   await fs.mkdir(outDir, { recursive: true });
   const outFile = path.join(outDir, "knowledge.json");
   await fs.writeFile(outFile, JSON.stringify(items, null, 2), "utf8");

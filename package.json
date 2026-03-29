@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build:knowledge": "node scripts/build-knowledge.mjs",
+    "predev": "npm run build:knowledge",
     "dev": "astro dev",
     "dev:network": "astro dev --host",
     "start": "astro dev",
@@ -15,7 +16,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "^0.9.2",
     "@astrojs/mdx": "^4.3.12",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
@@ -25,6 +26,8 @@
     "astro": "^5.16.4",
     "clsx": "^2.1.0",
     "fuse.js": "^7.0.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "sharp": "^0.33.2",
     "solid-js": "^1.8.15",
     "tailwind-merge": "^2.2.1",

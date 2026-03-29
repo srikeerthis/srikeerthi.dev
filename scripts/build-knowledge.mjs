@@ -1,4 +1,5 @@
 // scripts/build-knowledge.mjs
+import "dotenv/config";
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter"; // npm install gray-matter --save-dev
@@ -33,6 +34,30 @@ function chunkText(text, maxLen = 600) {
   }
   if (buf) chunks.push(buf.trim());
   return chunks;
+}
+
+async function getEmbeddingsBatch(texts, apiKey) {
+  const requests = texts.map((text) => ({
+    model: "models/gemini-embedding-001",
+    content: { parts: [{ text }] },
+  }));
+
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:batchEmbedContents?key=${apiKey}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ requests }),
+    }
+  );
+
+  const json = await res.json();
+  if (!json.embeddings) {
+    console.error("Batch embed failed:", json);
+    return texts.map(() => []);
+  }
+
+  return json.embeddings.map((emb) => emb.values || []);
 }
 
 async function collect() {
@@ -133,6 +158,23 @@ async function collect() {
 
   const outDir = path.join(root, "netlify", "functions");
   await fs.mkdir(outDir, { recursive: true });
+
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (apiKey) {
+    console.log("GEMINI_API_KEY found, pre-computing embeddings during build...");
+    const BATCH_SIZE = 50;
+    for (let i = 0; i < items.length; i += BATCH_SIZE) {
+      const batch = items.slice(i, i + BATCH_SIZE);
+      const texts = batch.map((b) => b.text);
+      let embeddings = await getEmbeddingsBatch(texts, apiKey);
+      for (let j = 0; j < batch.length; j++) {
+        batch[j].embedding = embeddings[j] || [];
+      }
+    }
+  } else {
+    console.log("No GEMINI_API_KEY found during build. Embeddings will be computed at runtime.");
+  }
+
   const outFile = path.join(outDir, "knowledge.json");
   await fs.writeFile(outFile, JSON.stringify(items, null, 2), "utf8");
   console.log(`Wrote ${items.length} chunks to ${outFile}`);

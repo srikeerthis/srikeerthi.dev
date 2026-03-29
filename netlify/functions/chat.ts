@@ -10,6 +10,7 @@ type KnowledgeItem = {
   title: string;
   url?: string;
   text: string;
+  embedding?: number[];
 };
 
 type EmbeddingChunk = KnowledgeItem & { embedding: number[] };
@@ -18,12 +19,12 @@ let cachedChunks: EmbeddingChunk[] | null = null;
 
 async function getEmbedding(text: string): Promise<number[]> {
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent?key=${GEMINI_API_KEY}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "models/text-embedding-004",
+        model: "models/gemini-embedding-001",
         content: { parts: [{ text }] },
       }),
     },
@@ -36,15 +37,42 @@ async function getEmbedding(text: string): Promise<number[]> {
 }
 
 function cosineSimilarity(a: number[], b: number[]): number {
+  if (!a || !b || a.length === 0 || b.length === 0) return -1;
   let dot = 0,
     na = 0,
     nb = 0;
-  for (let i = 0; i < a.length; i++) {
+  const len = Math.min(a.length, b.length);
+  for (let i = 0; i < len; i++) {
     dot += a[i] * b[i];
     na += a[i] * a[i];
     nb += b[i] * b[i];
   }
+  if (na === 0 || nb === 0) return -1;
   return dot / (Math.sqrt(na) * Math.sqrt(nb));
+}
+
+async function getEmbeddingsBatch(texts: string[]): Promise<number[][]> {
+  const requests = texts.map((text) => ({
+    model: "models/text-embedding-004",
+    content: { parts: [{ text }] },
+  }));
+
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:batchEmbedContents?key=${GEMINI_API_KEY}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ requests }),
+    }
+  );
+
+  const json = await res.json();
+  if (!json.embeddings) {
+    console.error("Batch embed failed:", json);
+    return texts.map(() => []);
+  }
+
+  return json.embeddings.map((emb: any) => emb.values || []);
 }
 
 async function ensureChunkEmbeddings(): Promise<EmbeddingChunk[]> {
@@ -55,20 +83,40 @@ async function ensureChunkEmbeddings(): Promise<EmbeddingChunk[]> {
     return cachedChunks;
   }
 
+  const items = knowledge as KnowledgeItem[];
+  
+  // If knowledge.json already contains embeddings (pre-computed during build), just use them!
+  const hasPrecomputed = items.length > 0 && items[0].embedding && items[0].embedding.length > 0;
+  
+  if (hasPrecomputed) {
+    console.log("Using pre-computed embeddings from knowledge.json");
+    cachedChunks = items as EmbeddingChunk[];
+    return cachedChunks;
+  }
+
   console.log(
     "Recalculating vector embeddings for",
     knowledge.length,
     "chunks...",
   );
 
-  const withEmbeddings: EmbeddingChunk[] = await Promise.all(
-    (knowledge as KnowledgeItem[]).map(async (item) => ({
-      ...item,
-      embedding: await getEmbedding(item.text),
-    })),
-  );
+  const chunksToCache: EmbeddingChunk[] = [];
+  
+  const BATCH_SIZE = 50;
+  for (let i = 0; i < items.length; i += BATCH_SIZE) {
+    const batch = items.slice(i, i + BATCH_SIZE);
+    const texts = batch.map((b) => b.text);
+    const embeddings = await getEmbeddingsBatch(texts);
+    
+    for (let j = 0; j < batch.length; j++) {
+      chunksToCache.push({
+        ...batch[j],
+        embedding: embeddings[j] || [],
+      });
+    }
+  }
 
-  cachedChunks = withEmbeddings;
+  cachedChunks = chunksToCache;
   return cachedChunks;
 }
 
@@ -103,6 +151,11 @@ export const handler = async (event: any) => {
       `USER: ${question}`,
     ].join("\n");
     const qEmbedding = await getEmbedding(retrievalText);
+    
+    if (!qEmbedding || qEmbedding.length === 0) {
+      console.error("Failed to generate embedding for question");
+      return { statusCode: 500, body: JSON.stringify({ answer: "I'm having trouble searching my knowledge base right now. Please try again later." }) };
+    }
 
     const scored = chunks
       .map((c) => ({

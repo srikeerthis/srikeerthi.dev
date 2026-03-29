@@ -1,4 +1,4 @@
-import knowledge from "./knowledge.json" assert { type: "json" };
+import knowledge from "./knowledge.json" with { type: "json" };
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -26,7 +26,7 @@ async function getEmbedding(text: string): Promise<number[]> {
         model: "models/text-embedding-004",
         content: { parts: [{ text }] },
       }),
-    }
+    },
   );
 
   const json = await res.json();
@@ -48,20 +48,31 @@ function cosineSimilarity(a: number[], b: number[]): number {
 }
 
 async function ensureChunkEmbeddings(): Promise<EmbeddingChunk[]> {
-  if (cachedChunks) return cachedChunks;
+  // If we already have the EXACT SAME number of chunks embedded as the JSON file, use the cache.
+  // Otherwise, recalculate them all. This ensures that when you run build-knowledge.mjs,
+  // the serverless function immediately knows the file got bigger and recalculates.
+  if (cachedChunks && cachedChunks.length === knowledge.length) {
+    return cachedChunks;
+  }
+
+  console.log(
+    "Recalculating vector embeddings for",
+    knowledge.length,
+    "chunks...",
+  );
 
   const withEmbeddings: EmbeddingChunk[] = await Promise.all(
     (knowledge as KnowledgeItem[]).map(async (item) => ({
       ...item,
       embedding: await getEmbedding(item.text),
-    }))
+    })),
   );
 
   cachedChunks = withEmbeddings;
   return cachedChunks;
 }
 
-exports.handler = async (event: any) => {
+export const handler = async (event: any) => {
   if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
@@ -106,21 +117,21 @@ exports.handler = async (event: any) => {
         (c) =>
           `${c.title}\nSource: ${c.source}${
             c.url ? ` (${c.url})` : ""
-          }\n\n${c.text}`
+          }\n\n${c.text}`,
       )
       .join("\n\n---\n\n");
 
     const conversationText =
       history
         .map((m) =>
-          m.role === "user" ? `User: ${m.text}` : `Assistant: ${m.text}`
+          m.role === "user" ? `User: ${m.text}` : `Assistant: ${m.text}`,
         )
         .join("\n") || "(no prior conversation)";
 
     const prompt = [
-      "You are a helpful assistant that answers questions about Srikeerthi.",
-      "Use ONLY the information in the context.",
-      "If the answer is not in the context, say you don't know.",
+      "You are an AI assistant representing Srikeerthi's portfolio website. Your job is to answer questions about his experience, projects, and blogs.",
+      "If the user asks a general question about Srikeerthi (like 'Who is Srikeerthi?'), introduce him as a Master's graduate in CS from UT Arlington, a software engineer, and summarize the provided context.",
+      "Base your answers on the provided context. If the specific details asked cannot be found or inferred from the context, politely say you don't have that information.",
       "",
       `Context:`,
       context,
@@ -132,7 +143,7 @@ exports.handler = async (event: any) => {
     ].join("\n");
 
     const chatRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -144,10 +155,11 @@ exports.handler = async (event: any) => {
             },
           ],
         }),
-      }
+      },
     );
 
     const chatJson = await chatRes.json();
+    console.log("Gemini API Response:", JSON.stringify(chatJson, null, 2));
     const answer =
       chatJson.candidates?.[0]?.content?.parts
         ?.map((p: any) => p.text || "")

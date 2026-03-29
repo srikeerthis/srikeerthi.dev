@@ -308,72 +308,156 @@
     "text": "Impact:\n\n- Enabled dieticians and nutrition experts to access a consolidated database of meal information, streamlining nutritional analysis and meal planning.\n  - Contributed to data-driven decision-making in dietary management by providing comprehensive, accurate meal data."
   },
   {
+    "id": "projects:Real-Time-Bidding-Engine#1",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine\n\nImplementing a Contextual Bandit-based bidding optimizer using LinUCB to bridge the gap between Reinforcement Learning and Distributed Systems.\n\n## Introduction\nIn high-frequency marketplaces like DoorDash or Uber, split-second decisions—such as pricing a delivery or bidding for an ad placement—determine the platform's liquidity and ROI. Unlike static supervised learning, these environments require **Sequential Decision Making** under uncertainty."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#2",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "This project implements a **Distributed Real-Time Bidding (RTB) Engine** that uses a **Contextual Bandit** approach to maximize conversion value. By learning optimal bidding strategies based on real-time user features, the system solves the **Exploration-Exploitation trade-off** inherent in marketplace auctions.\n\n## Methodology\nThe implementation follows a modular architecture, separating the stochastic environment from the decision-making brain and the production-grade API."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#3",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "### Step 1: Marketplace Environment Simulation\nI developed a synthetic marketplace that generates a continuous stream of \"Auction Requests.\" Each request provides a **Context Vector** $x$ representing:\n- **Temporal Features**: Time of day (e.g., peak dinner hours).\n- **User Segments**: Historical behavior (e.g., \"Premium\" vs. \"New User\").\n- **Merchant Type**: Restaurant vs. Grocery."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#4",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "### Step 2: The RL Agent (LinUCB)\nAt the core of the engine is the **LinUCB** algorithm. This agent assumes that the expected reward for a bidding strategy is a linear function of the context. It calculates an **Upper Confidence Bound (UCB)** to decide when to \"exploit\" a known winning bid and when to \"explore\" a new strategy to gather data."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#5",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "### Step 3: Productionalizing with FastAPI\nTo simulate a real-world \"Bidding Service,\" the agent is wrapped in a **FastAPI** microservice.\n- **Low Latency**: The inference path (`POST /predict`) is optimized with NumPy to deliver decisions in **<20ms**.\n- **Asynchronous Learning**: Using **FastAPI Background Tasks**, the model updates its weights upon receiving reward feedback (`POST /update`) without blocking the main execution thread."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#6",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "### Step 4: Dockerization\nThe entire stack is containerized for horizontal scalability, allowing the engine to be deployed in distributed environments where multiple instances can eventually share a global state via a feature store like Redis.\n\n## Mathematical Deep Dive: The LinUCB Logic\nTraditional Multi-Armed Bandits treat every \"arm\" as a black box. **LinUCB** is more sophisticated; it maps rewards to context. For every available bidding strategy $a$, the agent calculates a score $p_{t,a}$:"
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#7",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "$$p_{t,a} = \\underbrace{\\hat{\\theta}_a^\\top x_{t,a}}_{\\text{Exploitation}} + \\underbrace{\\alpha \\sqrt{x_{t,a}^\\top A_a^{-1} x_{t,a}}}_{\\text{Exploration}}$$\n\n### 1. Exploitation ($\\hat{\\theta}_a^\\top x_{t,a}$)\nThis is the predicted reward. It represents the dot product between our learned weights $\\theta$ and the current user context. It tells the agent what it *thinks* will happen based on past data."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#8",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "### 2. Exploration ($\\alpha \\sqrt{x_{t,a}^\\top A_a^{-1} x_{t,a}}$)\nThis is the **Uncertainty Bonus**. As the covariance matrix $A$ (which tracks previously seen contexts) grows, the uncertainty for a specific context direction shrinks. \n- **$\\alpha$** acts as a hyperparameter for curiosity. \n- If the context is \"new\" or under-explored, this bonus increases, forcing the agent to place a bid to learn more."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#9",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "## Results\nThe engine was validated through a 1,000-auction simulation against a stochastic marketplace with hidden conversion weights.\n- **Conversion Rate**: The agent achieved a **73.90% conversion rate**, demonstrating rapid convergence after the initial exploration phase.\n- **Performance**: The stateless architecture successfully handled high-concurrency requests, maintaining sub-20ms response times suitable for RTB requirements."
+  },
+  {
+    "id": "projects:Real-Time-Bidding-Engine#10",
+    "source": "projects",
+    "title": "Marketplace Intelligence: Architecting a Distributed Real-Time Bidding (RTB) Engine",
+    "url": "/projects/Real-Time-Bidding-Engine",
+    "text": "| Metric | Performance |\n| :--- | :--- |\n| **Final Conversion Rate** | 73.90% |\n| **Inference Latency** | < 20ms |\n| **Scaling Readiness** | Dockerized / Stateless |\n\n## Conclusion\nBy bridging the gap between Reinforcement Learning theory and Distributed Systems engineering, this project provides a scalable framework for marketplace optimization. The move from linear context to **Deep RL (DQN)** and **Distributed State Management (Redis)** represents the next step in evolving this engine for web-scale logistics and ads-delivery funnels."
+  },
+  {
     "id": "work:IAN#1",
     "source": "work",
-    "title": "IAN",
+    "title": "Alpha and Beta Tester (Volunteer) at IAN",
     "url": "/work/IAN",
-    "text": "IAN\n\nVolunteered at [IAN](https://www.ian.ong/) to support the development and optimization of the platform, progressively contributing as an Alpha Tester and Beta Tester."
+    "text": "Alpha and Beta Tester (Volunteer) at IAN\n\nWork Experience as Alpha and Beta Tester (Volunteer) at IAN.\n\nVolunteered at [IAN](https://www.ian.ong/) to support the development and optimization of the platform, progressively contributing as an Alpha Tester and Beta Tester."
   },
   {
     "id": "work:IAN#2",
     "source": "work",
-    "title": "IAN",
+    "title": "Alpha and Beta Tester (Volunteer) at IAN",
     "url": "/work/IAN",
     "text": "- Identified and reported **critical bugs** affecting performance, security, and usability.\n- Provided **UX feedback** to improve interface interactions (auto-scrolling, response delays, and navigation flows).\n- Suggested and tested **feature enhancements** including query editing, search options, and admin notifications.\n- Contributed to **first-round documentation**, detailing platform architecture, features, and usage guidelines."
   },
   {
+    "id": "work:Olympic Collectibles AI solutions#1",
+    "source": "work",
+    "title": "AI Engineer  at Olympic Collectibles AI solutions",
+    "url": "/work/Olympic Collectibles AI solutions",
+    "text": "AI Engineer  at Olympic Collectibles AI solutions\n\nWork Experience as AI Engineer  at Olympic Collectibles AI solutions.\n\nAt [Olympic Collectibles AI solutions (now Gradient)](https://gradientcollects.com)"
+  },
+  {
     "id": "work:University of Texas at Arlington#1",
     "source": "work",
-    "title": "University of Texas at Arlington",
+    "title": "Research Assistant at University of Texas at Arlington",
     "url": "/work/University of Texas at Arlington",
-    "text": "University of Texas at Arlington\n\nWorked as Research Assistant at Sustainable Equity Allocation Resources [SEAR Lab](https://searlab.uta.edu/). Here I got exposed to ArcGIS a Geospatial Information Systems software and analytics platform. Improved my research skills and shared knowledge on GIS to peers."
+    "text": "Research Assistant at University of Texas at Arlington\n\nWork Experience as Research Assistant at University of Texas at Arlington.\n\nWorked as Research Assistant at Sustainable Equity Allocation Resources [SEAR Lab](https://searlab.uta.edu/). Here I got exposed to ArcGIS a Geospatial Information Systems software and analytics platform. Improved my research skills and shared knowledge on GIS to peers."
   },
   {
     "id": "work:University of Texas at Arlington#2",
     "source": "work",
-    "title": "University of Texas at Arlington",
+    "title": "Research Assistant at University of Texas at Arlington",
     "url": "/work/University of Texas at Arlington",
     "text": "- Conducted **EV range analysis** using **ArcGIS Pro**, mapping the maximum coverage area of various electric vehicles on a single charge across the U.S.\n- Reconstructed **3D neighborhood layouts** from **2D LiDAR data** using deep learning techniques with **90% accuracy**.\n- Investigated and analyzed **critical infrastructure** in Texas, highlighting **income and demography-based** accessibility.\n\n**Key Technologies**: ArcGIS Pro, GIS, LiDAR, Deep Learning"
   },
   {
     "id": "work:ecohome.one#1",
     "source": "work",
-    "title": "ecohome.one",
+    "title": "Software Developer Intern at Ecohome.one LLC",
     "url": "/work/ecohome.one",
-    "text": "ecohome.one\n\nAt [EcoHome](https://ecohome.one/), I am actively shaping user experiences and building technology-driven solutions to promote sustainability and community engagement. My work spans across key initiatives:\n\n**Alexa-Powered Inventory Automation**\n\n- Developed an Alexa Skill to extract receipts from emails and securely store inventory data with user consent.\n- Engineered the backend using **AWS Lambda, SQS, and MongoDB** to ensure fast, reliable data processing.\n- Integrated **Gemini AI** for intelligent data extraction and **AWS Elastic Cache** to optimize performance."
+    "text": "Software Developer Intern at Ecohome.one LLC\n\nWork Experience as Software Developer Intern at Ecohome.one LLC.\n\nAt [EcoHome](https://ecohome.one/), I am actively shaping user experiences and building technology-driven solutions to promote sustainability and community engagement. My work spans across key initiatives:\n\n**Alexa-Powered Inventory Automation**"
   },
   {
     "id": "work:ecohome.one#2",
     "source": "work",
-    "title": "ecohome.one",
+    "title": "Software Developer Intern at Ecohome.one LLC",
     "url": "/work/ecohome.one",
-    "text": "**Non-Profit Donation Platform**\n\n- Built a **React & Next.js** web app enabling NGOs to request donated items from individuals and organizations.\n- Designed a user-friendly interface to facilitate seamless donor-NGO interactions and streamline request fulfillment.\n\n**Key Technologies**: Alexa Skill Kit, AWS Lambda, Amazon SQS, Gemini AI, MongoDB, AWS Elastic Cache, React.js, Next.js"
+    "text": "- Developed an Alexa Skill to extract receipts from emails and securely store inventory data with user consent.\n- Engineered the backend using **AWS Lambda, SQS, and MongoDB** to ensure fast, reliable data processing.\n- Integrated **Gemini AI** for intelligent data extraction and **AWS Elastic Cache** to optimize performance.\n\n**Non-Profit Donation Platform**\n\n- Built a **React & Next.js** web app enabling NGOs to request donated items from individuals and organizations.\n- Designed a user-friendly interface to facilitate seamless donor-NGO interactions and streamline request fulfillment."
+  },
+  {
+    "id": "work:ecohome.one#3",
+    "source": "work",
+    "title": "Software Developer Intern at Ecohome.one LLC",
+    "url": "/work/ecohome.one",
+    "text": "**Key Technologies**: Alexa Skill Kit, AWS Lambda, Amazon SQS, Gemini AI, MongoDB, AWS Elastic Cache, React.js, Next.js"
   },
   {
     "id": "work:nestle#1",
     "source": "work",
-    "title": "nestle",
+    "title": "Intern at Nestle India",
     "url": "/work/nestle",
-    "text": "nestle\n\nInterned at one of biggest FMCG's and leading brand in the world. For the first time I exposed my computer science skills in data engineering and analytics in an industrial setting. I utilized the power of google suite to create a reporting system for anomalies in equipment in the factory.\n\n- Created a **web-based** tool to streamline equipment maintenance reporting, boosting operational efficiency by **40%**.\n- Led **training initiatives** that improved workforce productivity by **15%**, optimizing factory processes."
+    "text": "Intern at Nestle India\n\nWork Experience as Intern at Nestle India.\n\nInterned at one of biggest FMCG's and leading brand in the world. For the first time I exposed my computer science skills in data engineering and analytics in an industrial setting. I utilized the power of google suite to create a reporting system for anomalies in equipment in the factory.\n\n- Created a **web-based** tool to streamline equipment maintenance reporting, boosting operational efficiency by **40%**.\n- Led **training initiatives** that improved workforce productivity by **15%**, optimizing factory processes."
   },
   {
     "id": "work:scientist technologies#1",
     "source": "work",
-    "title": "scientist technologies",
+    "title": "Machine Learning Engineer at Scientist Technologies",
     "url": "/work/scientist technologies",
-    "text": "scientist technologies\n\nWorked in a fast paced early stage startup as a [Scientist](https://www.scientisttechnologies.co.uk/). Here I gained experience on agile development, developed knowledge in Computer Vision, researched different models, libraries to create prototype and deploy on the web."
+    "text": "Machine Learning Engineer at Scientist Technologies\n\nWork Experience as Machine Learning Engineer at Scientist Technologies.\n\nWorked in a fast paced early stage startup as a [Scientist](https://www.scientisttechnologies.co.uk/). Here I gained experience on agile development, developed knowledge in Computer Vision, researched different models, libraries to create prototype and deploy on the web."
   },
   {
     "id": "work:scientist technologies#2",
     "source": "work",
-    "title": "scientist technologies",
+    "title": "Machine Learning Engineer at Scientist Technologies",
     "url": "/work/scientist technologies",
     "text": "- Deployed a **computer vision** model for **post-joint surgery** exercise analysis, serving **100+ patients** and reducing additional physiotherapy costs by **5%**.\n- Achieved **95% accuracy** interpreting medical device readings with AI, enabling **real-time data transmission** to healthcare providers.\n- Built an **NLP-based diet planner** using **5,000+scraped Indian recipes**, enhancing personalized nutrition plans.\n- Worked with **Python, Flask, AWS EC2, S3, and REST APIs** to develop and maintain scalable software solutions."
   },
   {
     "id": "work:scientist technologies#3",
     "source": "work",
-    "title": "scientist technologies",
+    "title": "Machine Learning Engineer at Scientist Technologies",
     "url": "/work/scientist technologies",
     "text": "**Key Technologies**: Python, Computer Vision, NLP, AWS EC2, S3, Flask, REST APIs"
   },

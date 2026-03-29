@@ -55,11 +55,18 @@ async function collect() {
         const { data, content } = matter(raw);
 
         const slug = data.slug || slugFromFilename(entry.name);
-        const title = data.title || slug;
         const url = `${base}/${slug}`;
         const baseId = `${type}:${slug}`;
 
-        const text = `${title}\n\n${data.summary ?? ""}\n\n${content}`;
+        // Create the title and text string correctly
+        const title =
+          data.title ||
+          (data.company ? `${data.role} at ${data.company}` : slug);
+        const roleContext = data.company
+          ? `Work Experience as ${data.role} at ${data.company}.\n\n`
+          : "";
+        const text = `${title}\n\n${roleContext}${data.summary ?? ""}\n\n${content}`;
+
         const chunks = chunkText(text);
 
         chunks.forEach((chunk, i) => {
@@ -76,7 +83,12 @@ async function collect() {
       // Case 2: nested folder with index.md/mdx (e.g. blog/My-post/index.md)
       if (entry.isDirectory()) {
         const folder = path.join(absDir, entry.name);
-        const indexCandidates = ["index.mdx", "index.md"];
+        const indexCandidates = [
+          "index.mdx",
+          "index.md",
+          "about.mdx",
+          "about.md",
+        ];
 
         for (const idx of indexCandidates) {
           const full = path.join(folder, idx);
@@ -85,11 +97,18 @@ async function collect() {
             const { data, content } = matter(raw);
 
             const slug = data.slug || entry.name;
-            const title = data.title || slug;
             const url = `${base}/${slug}`;
             const baseId = `${type}:${slug}`;
 
-            const text = `${title}\n\n${data.summary ?? ""}\n\n${content}`;
+            // Apply the same logic here to fix missing titles
+            const title =
+              data.title ||
+              (data.company ? `${data.role} at ${data.company}` : slug);
+            const roleContext = data.company
+              ? `Work Experience as ${data.role} at ${data.company}.\n\n`
+              : "";
+            const text = `${title}\n\n${roleContext}${data.summary ?? ""}\n\n${content}`;
+
             const chunks = chunkText(text);
 
             chunks.forEach((chunk, i) => {

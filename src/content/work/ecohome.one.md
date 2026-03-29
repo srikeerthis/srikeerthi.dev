@@ -2,7 +2,7 @@
 company: "Ecohome.one LLC"
 role: "Software Developer Intern"
 dateStart: "01/20/2025"
-dateEnd: "Present"
+dateEnd: "09/01/2025"
 ---
 
 At [EcoHome](https://ecohome.one/), I am actively shaping user experiences and building technology-driven solutions to promote sustainability and community engagement. My work spans across key initiatives:
